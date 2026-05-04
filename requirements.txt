@@ -1,0 +1,4 @@
+python-dotenv      # .env 파일 읽기
+requests           # HTTP API 호출
+tzdata             # Windows 시간대 데이터
+# FinanceDataReader  # 스크리너 단계에서 추가 예정
