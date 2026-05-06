@@ -23,7 +23,7 @@ def fetch_upper_limit_stocks() -> list[str]:
     codes = set()
     headers = get_headers()
     if not headers.get("authorization", "").startswith("Bearer "):
-        print("[스크리너] 토큰 없음 — 종료")
+        print("[스크리너] 토큰 없음 - 종료")
         return []
 
     for i in range(LOOKBACK_DAYS):
@@ -41,7 +41,7 @@ def fetch_upper_limit_stocks() -> list[str]:
                 codes.add(item.get("stk_cd", ""))
             print(f"[스크리너] {target_date} 상한가 조회 완료")
         except Exception as e:
-            print(f"[스크리너] {target_date} 조회 실패 — {e}")
+            print(f"[스크리너] {target_date} 조회 실패 - {e}")
         time.sleep(1)  # 날짜별로 1초 간격
 
     return list(codes - {""})
@@ -63,13 +63,13 @@ def check_trade_amount(code: str) -> bool:
         passing = sum(1 for a in amounts if a >= MIN_TRADE_AMOUNT)
         return passing >= MIN_HIGH_DAYS
     except Exception as e:
-        print(f"[스크리너] {code} 거래대금 조회 실패 — {e}")
+        print(f"[스크리너] {code} 거래대금 조회 실패 - {e}")
         return False
 
 
 def run_screener():
     """스크리너 실행: 조건 통과 종목을 관심종목 파일에 저장."""
-    print(f"[스크리너] 시작 — 최근 {LOOKBACK_DAYS}일 상한가 종목 조회")
+    print(f"[스크리너] 시작 - 최근 {LOOKBACK_DAYS}일 상한가 종목 조회")
     candidates = fetch_upper_limit_stocks()
     print(f"[스크리너] 상한가 후보: {len(candidates)}개")
 
@@ -86,4 +86,4 @@ def run_screener():
         for code in passed:
             f.write(code + "\n")
 
-    print(f"[스크리너] 완료 — {len(passed)}개 종목 → {WATCHLIST_FILE} 저장")
+    print(f"[스크리너] 완료 - {len(passed)}개 종목 → {WATCHLIST_FILE} 저장")

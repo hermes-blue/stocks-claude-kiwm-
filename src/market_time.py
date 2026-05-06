@@ -26,4 +26,4 @@ def log_market_status():
     if is_market_open():
         print(f"[시장] 정규장 운영 중 ({now_kst().strftime('%H:%M:%S')})")
     else:
-        print(f"[시장] 장 외 시간 ({now_kst().strftime('%H:%M:%S')}) — 매매 중단")
+        print(f"[시장] 장 외 시간 ({now_kst().strftime('%H:%M:%S')}) - 매매 중단")

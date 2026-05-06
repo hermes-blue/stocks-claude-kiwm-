@@ -68,7 +68,7 @@ def run_position_manager():
         # 1차 익절 (절반, 1회만)
         if rate >= TAKE_PROFIT_1 and not m["half_sold"]:
             half = max(1, qty // 2)
-            print(f"[포지션] {code} 1차 익절 ({rate:.2f}% ≥ {TAKE_PROFIT_1}%) — {half}주 매도")
+            print(f"[포지션] {code} 1차 익절 ({rate:.2f}% ≥ {TAKE_PROFIT_1}%) - {half}주 매도")
             if sell_market(code, half, reason="1차익절"):
                 m["half_sold"] = True
 

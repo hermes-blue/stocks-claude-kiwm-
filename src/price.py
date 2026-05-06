@@ -28,7 +28,7 @@ def fetch_price(stock_code: str) -> dict | None:
     headers["api-id"] = "ka10007"
 
     if not headers.get("authorization", "").startswith("Bearer "):
-        log(f"[시세] {stock_code} 조회 실패 — 토큰 없음")
+        log(f"[시세] {stock_code} 조회 실패 - 토큰 없음")
         return None
 
     try:
@@ -48,6 +48,6 @@ def fetch_price(stock_code: str) -> dict | None:
         return {"code": stock_code, "current": current, "change_rate": change_rate}
 
     except Exception as e:
-        log(f"[시세] {stock_code} 조회 실패 — {e} (넘어감)")
+        log(f"[시세] {stock_code} 조회 실패 - {e} (넘어감)")
         time.sleep(1)
         return None
